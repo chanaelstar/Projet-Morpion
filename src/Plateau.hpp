@@ -2,4 +2,4 @@
 #include <iostream>
 #include <array>
 
-void draw_game_board(std::array <char, 9> tab);
+void draw_game_board(std::array <char, 9>& tab);
