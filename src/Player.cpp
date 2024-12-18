@@ -14,7 +14,7 @@ Player create_player(){
 };
 
 
-
+// Fonction pour vérifier si un joueur a gagné 
 bool Player::win(std::array<char, 9>& grille, int position){
     int x = position % 3;
     int y = position / 3;
@@ -47,3 +47,8 @@ bool Player::win(std::array<char, 9>& grille, int position){
         }
        
 }
+
+// Fonction pour vérifier si la grille est pleine 
+// bool null(){
+
+// }

@@ -1,10 +1,9 @@
 #include <iostream>
 #include "Player.hpp"
 #include "Plateau.hpp"
-#include "Condition.hpp"
 #include "Mode_de_jeu.hpp"
 
-
+void draw_game_board();
 int main(){
     // Menu de démarrage
     std::cout << "Bienvenue dans le jeu du Morpion" << std::endl;
@@ -20,15 +19,10 @@ int main(){
         std::cin >> mode_jeu;
     }
 
-    
-     // affiche le plateau chiffre 
-    std::array <char, 9> tab {'0', '1', '2', '3', '4', '5', '6', '7','8'};
-    draw_game_board(tab);
-
-    // affiche le plateau 
-    std::array <char, 9> grille {};
-    grille.fill('.');
-    draw_game_board(grille);
+    // Déclaration de la grille (avec chiffre et vide)
+    std::array <char, 9> tab {'0', '1', '2', '3', '4', '5', '6', '7','8'}; // déclaration de la grille (avec chiffre)
+    std::array <char, 9> grille {}; // déclaration de la grille vide
+  
     
     if(mode_jeu==1){
             // std::cout << "Entrez le nom du joueur 1 : ";
@@ -44,7 +38,12 @@ int main(){
             Player player {create_player()};
     }
 
+    // affiche le plateau chiffre 
+    draw_game_board(tab);
+    std::cout << std::endl;
 
-
+    // affiche le plateau 
+    grille.fill('.');
+    draw_game_board(grille);
 
 }
