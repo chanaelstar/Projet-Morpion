@@ -42,6 +42,7 @@ int random_IA_choice()
     return random_number;
 }
 
+
 // Fonction pour vérifier si un joueur a gagné
 bool Player::win(std::array<char, 9> &grille)
 {

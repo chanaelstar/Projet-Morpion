@@ -14,7 +14,7 @@ int main()
     std::cout << "1. Deux joueurs" << std::endl;
     std::cout << "2. Un joueur contre l'IA" << std::endl;
 
-
+    // Gestions d'erreurs de saisies 
     while (true) {
         std::cin >> mode_jeu;
         if (std::cin.fail() || mode_jeu < 1 || mode_jeu > 2) {
@@ -29,7 +29,7 @@ int main()
     // Déclaration de la grille (avec chiffre et vide)
     std::array<char, 9> tab{'0', '1', '2', '3', '4', '5', '6', '7', '8'}; // déclaration de la grille (avec chiffre)
     std::array<char, 9> grille{};                                         // déclaration de la grille vide
-    grille.fill('.');
+    grille.fill('.'); // remplit la grille 
 
     if (mode_jeu == 1)
     {

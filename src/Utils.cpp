@@ -5,6 +5,7 @@
 #include "Mode_de_jeu.hpp"
 #include <random>
 
+// Le jeu est fini
 bool is_end(Player player1, Player player2, std::array<char, 9> &grille)
 {
     if (player1.win(grille))
@@ -25,6 +26,7 @@ bool is_end(Player player1, Player player2, std::array<char, 9> &grille)
     return false;
 }
 
+// La fonction choisie le joueur qui commencera la partie de façon aléatoire
 void random_player_start(Player &player1, Player &player2)
 {
     srand(time(0));
@@ -43,7 +45,8 @@ void random_player_start(Player &player1, Player &player2)
     }
 }
 
+// Si le joueur choisi une position, celle ci est barrée sur la grille 
 void edit_tab(int player_choice, std::array<char, 9>& tab){
-    tab[player_choice] = '/';
+    tab[player_choice] = '/'; 
 }
 
