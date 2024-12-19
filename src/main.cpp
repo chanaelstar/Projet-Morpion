@@ -13,13 +13,17 @@ int main()
     int mode_jeu{};
     std::cout << "1. Deux joueurs" << std::endl;
     std::cout << "2. Un joueur contre l'IA" << std::endl;
-    std::cin >> mode_jeu;
 
-    while (mode_jeu != 1 && mode_jeu != 2 && !isdigit(mode_jeu))
-    {
 
-        std::cout << "Veuillez choisir un mode de jeu entre 1 et 2 : " << std::endl;
+    while (true) {
         std::cin >> mode_jeu;
+        if (std::cin.fail() || mode_jeu < 1 || mode_jeu > 2) {
+            std::cout << "Entree invalide. Veuillez entrer un nombre entre 1 et 2." << std::endl;
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } else {
+            break; 
+        }
     }
 
     // Déclaration de la grille (avec chiffre et vide)
