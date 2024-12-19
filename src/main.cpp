@@ -15,7 +15,7 @@ int main()
     std::cout << "2. Un joueur contre l'IA" << std::endl;
     std::cin >> mode_jeu;
 
-    while (mode_jeu != 1 && mode_jeu != 2)
+    while (mode_jeu != 1 && mode_jeu != 2 && !isdigit(mode_jeu))
     {
 
         std::cout << "Veuillez choisir un mode de jeu entre 1 et 2 : " << std::endl;

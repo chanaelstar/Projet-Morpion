@@ -9,12 +9,12 @@ bool is_end(Player player1, Player player2, std::array<char, 9> &grille)
 {
     if (player1.win(grille))
     {
-        std::cout << "Le joueur " << player1.name << " a gagné !" << std::endl;
+        std::cout << "Le joueur " << player1.name << " gagne !" << std::endl;
         return true;
     }
     else if (player2.win(grille))
     {
-        std::cout << "Le joueur " << player2.name << " a gagné !" << std::endl;
+        std::cout << "Le joueur " << player2.name << " gagne !" << std::endl;
         return true;
     }
     else if (board_is_full(grille))
@@ -41,5 +41,9 @@ void random_player_start(Player &player1, Player &player2)
     {
         player2.can_play = true;
     }
+}
+
+void edit_tab(int player_choice, std::array<char, 9>& tab){
+    tab[player_choice] = '/';
 }
 
