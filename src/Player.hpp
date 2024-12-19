@@ -13,3 +13,5 @@ struct Player{
 };
 
 Player create_player();
+Player create_IA(Player player);
+int random_IA_choice();

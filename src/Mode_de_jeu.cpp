@@ -6,7 +6,7 @@
 #include "Plateau.hpp"
 
 // Deux joueurs
-void game_2_players(std::array<char, 9> &grille,std::array<char, 9> &tab)
+void game_2_players(std::array<char, 9> &grille, std::array<char, 9> &tab)
 {
      Player player1;
      Player player2;
@@ -15,7 +15,8 @@ void game_2_players(std::array<char, 9> &grille,std::array<char, 9> &tab)
      std::cout << "Entrez le nom du joueur 2 : ";
      player2 = create_player();
 
-     player1.can_play = true; // todo : le faire aléatoirement
+     random_player_start(player1, player2);
+
      while (!is_end(player1, player2, grille))
      {
           if (player1.can_play)
@@ -49,4 +50,45 @@ void game_2_players(std::array<char, 9> &grille,std::array<char, 9> &tab)
      }
 }
 
-// Un joueur et IA
+// 1 Joueur et une IA
+void game_IA(std::array<char, 9> &grille, std::array<char, 9> &tab)
+{
+     Player player;
+     Player ChatGPT;
+     std::cout << "Entrez le nom du joueur : ";
+     player = create_player();
+     ChatGPT = create_IA(player);
+
+     random_player_start(player, ChatGPT);
+
+     while (!is_end(player, ChatGPT, grille))
+     {
+          if (player.can_play)
+          {
+               do
+               {
+                    std::cout << "C'est au tour de : " << player.name << std::endl;
+                    std::cout << "Choisir une position entre 0 et 8" << std::endl;
+                    draw_game_board(tab);
+                    std::cin >> player.choice;
+               } while (!player.valid_choice(ChatGPT, grille));
+               grille[player.choice] = player.symbol;
+               draw_game_board(grille);
+               player.can_play = false;
+               ChatGPT.can_play = true;
+          }
+          else if (ChatGPT.can_play)
+          {
+               do
+               {
+                    std::cout << "C'est au tour de : " << ChatGPT.name << std::endl;
+                    std::cout << ChatGPT.name << "Choisi une position entre 0 et 8" << std::endl;
+                    ChatGPT.choice = random_IA_choice();
+               } while (!ChatGPT.valid_choice(player, grille));
+               grille[ChatGPT.choice] = ChatGPT.symbol;
+               draw_game_board(grille);
+               ChatGPT.can_play = false;
+               player.can_play = true;
+          }
+     }
+}

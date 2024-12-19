@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Player.hpp"
 #include <array>
+#include <random>
 
 // création du joueur
 Player create_player()
@@ -11,6 +12,35 @@ Player create_player()
     std::cin >> player.symbol;
     return player;
 };
+
+//création d'une IA
+Player create_IA(Player player)
+{
+    Player IA;
+    IA.name = "ChatGPT";
+    srand(time(0));
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> d1('A', 'Z');
+    char random_symbol;
+    do
+    {
+        random_symbol = d1(gen);
+    } while (random_symbol == player.symbol);
+    IA.symbol = random_symbol;
+    std::cout << "Nom de l'IA : " << IA.name << std::endl;
+    std::cout << "Symbole de l'IA : " << IA.symbol << std::endl;
+    return IA;
+}
+
+int random_IA_choice()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> d1(0, 8);
+    int random_number{d1(gen)};
+    return random_number;
+}
 
 // Fonction pour vérifier si un joueur a gagné
 bool Player::win(std::array<char, 9> &grille)
@@ -49,3 +79,5 @@ bool Player::valid_choice(Player enemy, std::array<char, 9> &grille)
     }
     return false;
 }
+
+
