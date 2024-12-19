@@ -2,4 +2,4 @@
 #include <array>
 #include <Player.hpp>
 
-void game_2_players(Player player1, Player player2, std::array <char, 9>& grille);
+void game_2_players(std::array <char, 9>& grille, std::array<char, 9> &tab);

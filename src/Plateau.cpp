@@ -10,3 +10,16 @@ void draw_game_board(std::array <char, 9>& tab){
         std::cout << std::endl;
     }
 };
+
+// Fonction pour vérifier si la grille est pleine
+bool board_is_full(std::array<char, 9> &grille)
+{
+    for (int i = 0; i < grille.size(); i++)
+    {
+        if (grille[i] == '.')
+        {
+            return false; // La grille n'est pas pleine s'il reste au moins une case vide.
+        }
+    }
+    return true; // Si toutes les cases sont occupées, la grille est pleine.
+}
